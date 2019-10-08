@@ -25,13 +25,18 @@ void run(TCB_t *head){
 
 void yield(TCB_t *head)
 {
-    TCB_t *temp = (TCB_t*) malloc(sizeof(TCB_t));
-    temp->context=head->context;
-    temp->next=head->next;
-    temp->prev=head->prev;
-    temp->payload=head->payload;
+    //TCB_t *temp = (TCB_t*) malloc(sizeof(TCB_t));
+    //temp->context=head->context;
+    //temp->next=head->next;
+    //temp->prev=head->prev;
+    //temp->payload=head->payload;
     Rotate(head);
-    head=head->next;
+    TCB_t *temp=head;	
+    while(temp->next!=NULL){
+		temp=temp->next;
+}
+
+	
     swapcontext(&(temp->context), & (head->context));
     
 }
